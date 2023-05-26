@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>View Notes</title>
+
+</head>
+<body>
+
+	<section class="backg">
+
+		<div class="container">
+			<h3 class="text-center">My Notes</h3>
+			<div th:if="${session.msg}" class="text-center text-danger" role="alert">
+
+				<h5 th:text="${session.msg}"></h5>
+				<th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+			</div>
+
+			<div class="col-md-10 mt-3 offset-md-1" th:each="n:${pages}">
+				<div class="card paint-card">
+					<div class="card-body">
+						<div class="text-center">
+							<img alt="" th:src="@{/images/p2.jpg}"
+								style="width: 50px; height: 50px;">
+						</div>
+
+						<h5>[[${n.title}]]</h5>
+						<p>
+							[[${n.content}]]<br> <br> <span
+								class="font-weight-bold">Upload Date :</span>[[${n.updateDate}]]
+
+						</p>
+						<div class="text-center">
+							<a th:href="@{/user/editNotes/} +${n.id}" class="btn btn-primary btn-sm">Edit</a>
+							<a th:href="@{/user/deletNotes/} +${n.id}" class="btn btn-danger btn-sm ml-2">Delete</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="row p-4">
+				<div class="col-md-4 text-danger fw-bold">Total Notes
+					:[[${totalNotes}]]</div>
+				<div class="col-md-6">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
+
+							<li class="page-item"
+								th:classappend="${pageNo==0} ? 'disabled':''"><a
+								class="page-link" th:href="@{'/user/viewNotes/' + ${pageNo-1} }">Previous</a></li>
+
+							<li th:each="i:${#numbers.sequence(1,totalPages)}"
+								th:classappend="${pageNo+1==i} ? 'active':''" class="page-item"><a
+								th:href="@{'/user/viewNotes/' + ${i-1} }" class="page-link">[[${i}]]</a></li>
+
+							<li class="page-item"
+								th:classappend="${pageNo+1==totalPages} ? 'disabled':''"><a
+								class="page-link" th:href="@{'/user/viewNotes/' + ${pageNo+1} }">Next</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+
+	</section>
+
+</body>
+</html>

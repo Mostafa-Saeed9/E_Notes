@@ -1,0 +1,41 @@
+.backimg  {
+	background: url("../images/b2.jpg");
+	height: 100%;
+	width: 100%;
+	padding-top:30px;
+	background-repeat: no-repeat;
+	position: fixed;
+	background-size: cover;
+}
+.backg{
+	background: #f1f2f0;
+}
+
+
+.navbar .nav-item .nav-link{
+	font-size: 20px;
+	color: white;
+	
+}
+
+.navbar .nav-item:hover .nav-link {
+	background: white;
+	color: black;
+	border-radius: 10px;
+}
+.paint-card {
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.backimgs {
+	background: url("../images/b2.jpg");
+	height: 100%;
+	width: 100%;
+	padding-top:30px;
+	background-repeat: no-repeat;
+	position: fixed;
+	background-size: cover;
+	clear: inherit;
+}
+
+
